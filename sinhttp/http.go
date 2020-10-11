@@ -150,7 +150,7 @@ func (r *requestDetailImpl) WithHeaders(keyAndValues ...interface{}) *requestDet
 		r.impl.req.Header.Add(k, fmt.Sprint(keyAndValues[i+1]))
 	}
 	if (l+1)%2 == 1 {
-		sinlog.For(r.impl.ctx, zap.String("func", "nvwa_http.Client().XXX().WithHeaders")).Warnw("the keys are not aligned")
+		sinlog.For(r.impl.ctx, zap.String("func", "sinhttp.Client().XXX().WithHeaders")).Warnw("the keys are not aligned")
 		k := fmt.Sprint(keyAndValues[l])
 		r.impl.req.Header.Add(k, "")
 	}
@@ -174,7 +174,7 @@ func (r *requestDetailImpl) WithQueryParams(keyAndValues ...interface{}) *reques
 		r.impl.query.Add(fmt.Sprint(keyAndValues[i]), fmt.Sprint(keyAndValues[i+1]))
 	}
 	if (l+1)%2 == 1 {
-		sinlog.For(r.impl.ctx, zap.String("func", "nvwa_http.Client().XXX().WithQueryParams")).Warnw("the keys are not aligned")
+		sinlog.For(r.impl.ctx, zap.String("func", "sinhttp.Client().XXX().WithQueryParams")).Warnw("the keys are not aligned")
 		r.impl.query.Add(fmt.Sprint(keyAndValues[l]), "")
 	}
 	return r
