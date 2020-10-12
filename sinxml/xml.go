@@ -24,7 +24,7 @@ func decode(node *etree.Element, out reflect.Value, parent reflect.Value) error 
 		}
 		v := out.MapIndex(reflect.ValueOf(node.Tag))
 		if !v.IsValid() {
-			sinlog.Debugw("out value is not valid")
+			sinlog.With("tag", node.Tag).Debugw("out value is not valid")
 			return nil
 		}
 		childEles := node.ChildElements()
